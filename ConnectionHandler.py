@@ -70,12 +70,15 @@ def CMD_WHOIS(USER):
 
 if(CC_CONNECTED is False):
     ConnectToCC()
-if(C1_CONNECTED is False):
-    ConnectToC1()
+#if(C1_CONNECTED is False):
+#    ConnectToC1()
 
 while True:
     time.sleep(1)
     CC_BUFFER = CC_SOCK.recv(1024)
     print(CC_BUFFER)
-    C1_BUFFER = C1_SOCK.recv(1024)
-    print(C1_BUFFER)
+    temp = string.split(CC_BUFFER, "\n")
+    tmpb = temp.pop()
+    print(tmpb)
+    #C1_BUFFER = C1_SOCK.recv(1024)
+    #print(C1_BUFFER)
