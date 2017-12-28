@@ -69,9 +69,7 @@ if(C1_CONNECTED is False):
 
 while True:
     time.sleep(1)
-    if(CC_CONNECTED):
-        CC_BUFFER = CC_SOCK.recv(1024)
-        print(CC_BUFFER)
-    if(C1_CONNECTED and C1_LISTEN):
-        C1_BUFFER = C1_SOCK.recv(1024)
-        print(C1_BUFFER)
+    CC_BUFFER = CC_SOCK.recv(1024)
+    print(CC_BUFFER)
+    C1_BUFFER = C1_SOCK.recv(1024)
+    print(C1_BUFFER)
