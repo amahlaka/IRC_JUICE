@@ -73,12 +73,14 @@ if(CC_CONNECTED is False):
 #if(C1_CONNECTED is False):
 #    ConnectToC1()
 
-while CC_CONNECTED:
+while True:
     time.sleep(3)
-    CC_BUFFER = CC_SOCK.recv(1024)
-    print(CC_BUFFER)
-    temp = string.split(CC_BUFFER, "\n")
-    tmpb = temp.pop()
-    print(tmpb)
+    if(CC_CONNECTED is True):
+
+        CC_BUFFER = CC_SOCK.recv(1024)
+        print(CC_BUFFER)
+        temp = string.split(CC_BUFFER, "\n")
+        tmpb = temp.pop()
+        print(tmpb)
     #C1_BUFFER = C1_SOCK.recv(1024)
     #print(C1_BUFFER)
