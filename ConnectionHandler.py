@@ -26,7 +26,7 @@ C1_LISTEN = True
 
 def ConnectToCC():
     """Handle Connection to C&C Server."""
-    print("**** Connecting to: " + CC_HOST+":"+CC_PORT + " ****")
+    print("**** Connecting to: " + CC_HOST + ":" + str(CC_PORT) + " ****")
     CC_SOCK.connect((CC_HOST, CC_PORT))
     time.sleep(3)
     CC_SOCK.setblocking(False)
@@ -41,7 +41,7 @@ def ConnectToCC():
 
 def ConnectToC1():
     """Handle Connection to Target Server."""
-    print("**** Connecting to: " + C1_HOST+":"+C1_PORT + " ****")
+    print("**** Connecting to: " + C1_HOST+":"+str(C1_PORT) + " ****")
     C1_SOCK.connect((C1_HOST, C1_PORT))
     time.sleep(3)
     C1_SOCK.setblocking(False)
