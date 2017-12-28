@@ -90,5 +90,7 @@ while True:
         temp = string.split(CC_BUFFER, "\n")
         tmpb = temp.pop()
         print(tmpb)
+        if("451" in tmpb):
+            CC_SOCK.send("USER %s %s bla :%s\r\n" % (CC_NAME, CC_NAME, CC_NAME))
     #C1_BUFFER = C1_SOCK.recv(1024)
     #print(C1_BUFFER)
