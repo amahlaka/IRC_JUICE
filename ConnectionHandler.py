@@ -4,7 +4,7 @@ import string
 import time
 
 CC_HOST = "127.0.0.1"
-CC_PORT = "6667"
+CC_PORT = 6667
 CC_NAME = "Botteri"
 CC_OWNR = "amahlaka"
 CC_SOCK = socket.socket()
@@ -12,7 +12,7 @@ CC_CHAN = "##JUISSICMD"
 
 
 C1_HOST = "irc.choopa.net"
-C1_PORT = "6667"
+C1_PORT = 6667
 C1_NAME = "Botteri"
 C1_CHAN = "##BOTTERI"
 C1_SOCK = socket.socket()
