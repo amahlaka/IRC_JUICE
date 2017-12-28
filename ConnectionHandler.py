@@ -33,7 +33,7 @@ def ConnectToCC():
 print("**** Connecting to: " + CC_HOST + ":" + str(CC_PORT) + " ****")
 CC_SOCK.connect((CC_HOST, CC_PORT))
 CC_SOCK.setblocking(False)
-CC_SOCK.send("USER %s %s bla :%s\r\n" % (CC_NAME, CC_NAME, botteri))
+CC_SOCK.send("USER %s %s bla :%s\r\n" % (CC_NAME, CC_NAME, "botteri"))
 #tmps = "USER " + CC_NAME + " " + CC_NAME + " " + CC_NAME + " :bro\n"
 #CC_SOCK.send(tmps)
 time.sleep(10)
