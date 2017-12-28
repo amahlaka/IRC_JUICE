@@ -5,7 +5,7 @@ import time
 
 CC_HOST = "127.0.0.1"
 CC_PORT = 6667
-CC_NAME = "Botteri"
+CC_NAME = "BotteriB"
 CC_OWNR = "amahlaka"
 CC_SOCK = socket.socket()
 CC_CHAN = "##JUISSICMD"
@@ -34,8 +34,9 @@ print("**** Connecting to: " + CC_HOST + ":" + str(CC_PORT) + " ****")
 CC_SOCK.connect((CC_HOST, CC_PORT))
 time.sleep(3)
 CC_SOCK.setblocking(False)
-tmps = "USER " + CC_NAME + " " + CC_NAME + " " + CC_NAME + " :bro\n"
-CC_SOCK.send(tmps)
+CC_SOCK.send("USER %s %s bla :%s\r\n" % (CC_NAME, CC_NAME, CC_NAME))
+#tmps = "USER " + CC_NAME + " " + CC_NAME + " " + CC_NAME + " :bro\n"
+#CC_SOCK.send(tmps)
 time.sleep(3)
 CC_SOCK.send("NICK " + CC_NAME + "\n")
 time.sleep(3)
