@@ -31,8 +31,11 @@ def ConnectToCC():
     time.sleep(3)
     CC_SOCK.setblocking(False)
     CC_SOCK.send("USER " + CC_NAME + " " + CC_NAME + " " + CC_NAME + " :bro\n")
+    time.sleep(3)
     CC_SOCK.send("NICK " + CC_NAME + "\n")
+    time.sleep(3)
     CC_SOCK.send("JOIN " + CC_CHAN + "\n")
+    time.sleep(3)
     CC_SOCK.send("PRIVMSG " + CC_OWNR + " " + CC_NAME + " ALIVE\n")
     CC_SOCK.send("PRIVMSG " + CC_CHAN + " " + CC_NAME + " ALIVE\n")
     CC_CONNECTED = True
@@ -46,8 +49,11 @@ def ConnectToC1():
     time.sleep(3)
     C1_SOCK.setblocking(False)
     C1_SOCK.send("USER " + C1_NAME + " " + C1_NAME + " " + C1_NAME + " :bro\n")
+    time.sleep(3)
     C1_SOCK.send("NICK " + C1_NAME + "\n")
+    time.sleep(3)
     C1_SOCK.send("JOIN " + C1_CHAN + "\n")
+    time.sleep(3)
     CC_SOCK.send("PRIVMSG " + C1_CHAN + " " + C1_NAME + " ALIVE\n")
     C1_CONNECTED = True
     print("DONE\n")
