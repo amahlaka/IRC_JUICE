@@ -18,6 +18,11 @@ stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
 stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
 
+class User:
+    Name = ""
+    Nick = ""
+    Channels = ""
+
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
     stalker.join(["##JUISSICMD"])
@@ -33,7 +38,8 @@ def whois(message):
     global WHOIS_B
     if(WHOIS_B is None):
         WHOIS_B = "\n" + str(message)
-    WHOIS_B = WHOIS_B + "\n" + str(message)
+    else:
+        WHOIS_B = WHOIS_B + "\n" + str(message)
 
     print(message)
 
@@ -41,7 +47,7 @@ def whois(message):
 @stalker.on("irc-312")
 def whois2(message):
     global WHOIS_B
-    print("312")
+
 
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
@@ -49,48 +55,41 @@ def whois2(message):
 @stalker.on("irc-313")
 def whois3(message):
     global WHOIS_B
-    print("313")
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-314")
 def whois4(message):
     global WHOIS_B
-    print("314")
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-315")
 def whois5(message):
     global WHOIS_B
-    print("315")
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-316")
 def whois5(message):
     global WHOIS_B
-    print("316")
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-317")
 def whois5(message):
     global WHOIS_B
-    print("317")
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
+
+@stalker.on("irc-319")
+def whois5(message):
+    global WHOIS_B
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
 @stalker.on("irc-318")
 def whois5(message):
     global WHOIS_B
-    print("318")
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
     SendResult(WHOIS_B)
 
@@ -101,11 +100,12 @@ def SendResult(result):
     result = result.replace('RFC1459Message:', '')
     result = result.replace(':', '')
     resultS = result.split('\n')
-    #print(resultS)
     for line in resultS:
         temps = line.split(' ')
         temps = list(filter(None, temps))
         print(temps)
+        if(len(temps) => 3):
+            if(temps[1] == '311'):
 
 
 
