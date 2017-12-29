@@ -63,6 +63,7 @@ def MainLoop():
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
             print(readbuffer)
+            print(temp)
             if(CC_AUTH is False):
                 time.sleep(3)
 
@@ -75,7 +76,6 @@ def MainLoop():
                 message = "JOIN " + CC_CHAN + "\r\n"
                 SendMessage(CC_SOCK, message)
                 CC_AUTH = True
-
 
 
 ConnectCC()
