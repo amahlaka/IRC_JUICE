@@ -59,9 +59,12 @@ TRGT_NICK = config['TARGET']['Nick']  # Nickname of bot in Target server.
 
 # DO NOT MODIFY BELOW THIS!
 
+
+WHOIS_B = None
+IsRealUser = False
 bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
-WHOIS_B = None
+
 
 stalker = irc.connect(TRGT_HOST, TRGT_PORT, use_ssl=False)
 stalker.register(TRGT_NICK, TRGT_NICK, TRGT_NICK)
@@ -101,10 +104,12 @@ def autojoin_channels(message):
 def whois(message):
     """Handle IRC code 311."""
     global WHOIS_B
+    global IsRealUser
     if(WHOIS_B is None):
         WHOIS_B = "\n" + str(message)
     else:
         WHOIS_B = WHOIS_B + "\n" + str(message)
+        IsRealUser = True
 
 
 @stalker.on("irc-312")
@@ -160,9 +165,20 @@ def whois8(message):
 def whois9(message):
     """Handle IRC code 318, End of WHOIS."""
     global WHOIS_B
+    global IsRealUser
     print("RECIEVED CODE 318")
-    WHOIS_B = WHOIS_B + "\n" + str(message)
-    ParseResult(WHOIS_B)
+    if(IsRealUser is False):
+        ReplyError()
+    else:
+        WHOIS_B = WHOIS_B + "\n" + str(message)
+        ParseResult(WHOIS_B)
+        WHOIS_B = None
+        IsRealUser = False
+
+
+def ReplyError():
+    """Handle user not existing."""
+    bot.say(CC_CHANNEL, "User not found!")
 
 
 def ParseResult(result):
@@ -190,6 +206,7 @@ def ParseResult(result):
                 SendWhois()
 
 
+
 def SendWhois():
     """Send Whois results to C&C."""
     print("Saying")
@@ -203,6 +220,8 @@ def SendWhois():
     msg = "HOST: " + UserS.Host
     print(msg)
     bot.say(CC_CHANNEL, msg)
+    global userS
+    userS = User()
 
 
 @bot.on("message")
