@@ -124,8 +124,8 @@ def SendResult(result):
 
 
 def SendWhois(res):
-    msg = "Whois report:\n"+UserS.Nick+"'s Real name is: "+UserS.Name+"\n"
-    msg = msg + "Channel"
+    msg = "Whois report:\n"+res.Nick+"'s Real name is: "+res.Name+"\n"
+    msg = msg + "Channels: " + res.Chan
     print(msg)
     bot.say(CC_CHANNEL, "Results for WHOIS: {}".format(msg))
 
