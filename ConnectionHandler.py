@@ -101,7 +101,7 @@ def SendResult(result):
     for line in resultS:
         print(line + "\n")
         temps = line.split(' ')
-        print(temps[1])
+        print(temps)
 
 
 
