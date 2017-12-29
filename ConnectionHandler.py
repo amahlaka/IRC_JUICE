@@ -1,6 +1,5 @@
 import sys
 import time
-import string
 import asyncio
 from asyncirc import irc
 CC_HOST = "127.0.0.1"
@@ -92,11 +91,11 @@ def whois5(message):
 
 
 def SendResult(result):
-    temp = string.split(result, "\n")
+    temp = temp.split(result, "\n")
     result = temp.pop()
     for line in result:
-        line = string.rstrip(line)
-        line = string.split(line)
+        line = line.rstrip(line)
+        line = line.split(line)
         print(line)
 
 
