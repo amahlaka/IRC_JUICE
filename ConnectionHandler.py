@@ -2,11 +2,11 @@ import sys
 import time
 import asyncio
 from asyncirc import irc
-C1_HOST = "127.0.0.1"
+CC_HOST = "127.0.0.1"
 CC_PORT = 6667
 CC_NICK = "Botteri1"
 
-CC_HOST = "irc.choopa.net"
+C1_HOST = "chat.freenode.net"
 C1_PORT = 6667
 C1_CHAN = "##BOTTERI"
 C1_NICK = "Botteri1"
@@ -18,9 +18,9 @@ stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
 stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
 
-#@stalker.on("irc-001")
-#def autojoin_channelsB(message):
-#    stalker.join(["#BOTTERI"])
+@stalker.on("irc-001")
+def autojoin_channelsB(message):
+    stalker.join(["##JUISSICMD"])
 
 
 @bot.on("irc-001")
