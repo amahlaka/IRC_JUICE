@@ -3,7 +3,7 @@ import socket
 import string
 import time
 
-CC_HOST = "irc.choopa.net"
+CC_HOST = "127.0.0.1"
 CC_PORT = 6667
 CC_NAME = "BotteriB"
 CC_OWNR = "amahlaka"
@@ -62,25 +62,12 @@ def MainLoop():
             readbuffer = readbuffer+CC_SOCK.recv(1024)
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
-            if(readbuffer is not ""):
-                print(readbuffer)
             for line in readbuffer:
                 line = string.rstrip(line)
                 line = string.split(line)
                 print(line)
                 if(line[0] is "PING"):
                     SendMessage(CC_SOCK, "PONG :"+line[1])
-            if(CC_AUTH is False):
-                time.sleep(7)
-                message = "NICK " + CC_NAME + "\r\n"
-                SendMessage(CC_SOCK, message)
-                #time.sleep(4)
-                #message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
-                #SendMessage(CC_SOCK, message)
-                #time.sleep(4)
-                #message = "JOIN " + CC_CHAN + "\r\n"
-            #    SendMessage(CC_SOCK, message)
-                CC_AUTH = True
 
 
 ConnectCC()
