@@ -5,8 +5,22 @@ from asyncirc import irc
 CC_HOST = "127.0.0.1"
 CC_PORT = 6667
 CC_NICK = "Botteri1"
+
+C1_HOST = "irc.choopa.net"
+C1_PORT = 6667
+C1_CHAN = "##BOTTERI"
+C1_NICK = "Botteri1"
 bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
+
+
+stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
+stalker.register(C1_NICK, C1_NICK, C1_NICK)
+
+
+@stalker.on("irc-001")
+def autojoin_channels(message):
+    bot.join(["#BOTTERI"])
 
 
 @bot.on("irc-001")
@@ -21,6 +35,11 @@ def incoming_message(parsed, user, target, text):
     # target is a string representing nick/channel the message was sent to
     # text is the text of the message
     bot.say(target, "{}: you said {}".format(user.nick, text))
+    cmd = text.split(' ', 1)
+    if(cmd[0] is "!whois"):
+        stalker.writeln("WHOIS {}".format(cmd[1]))
+        stalker.say("##BOTTERI", "TESTING {}".format(cmd(1)))
+
 
 
 
