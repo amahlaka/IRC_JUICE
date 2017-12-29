@@ -109,7 +109,7 @@ def whois(message):
         WHOIS_B = "\n" + str(message)
     else:
         WHOIS_B = WHOIS_B + "\n" + str(message)
-        IsRealUser = True
+    IsRealUser = True
 
 
 @stalker.on("irc-312")
