@@ -3,12 +3,12 @@ import socket
 import string
 import time
 
-CC_HOST = "127.0.0.1"
+CC_HOST = "irc.choopa.net"
 CC_PORT = 6667
 CC_NAME = "BotteriB"
 CC_OWNR = "amahlaka"
 CC_SOCK = socket.socket()
-CC_CHAN = "##JUISSICMD"
+CC_CHAN = "##BOTTERI"
 
 readbuffer = ""
 C1_HOST = "irc.choopa.net"
@@ -40,10 +40,10 @@ def ConnectCC():
     if(CC_STAT is 0):
         print("CONNECTED")
         CC_CONNECTED = True
-        message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
-        SendMessage(CC_SOCK, message)
-        message = "NICK " + CC_NAME + "\r\n"
-        SendMessage(CC_SOCK, message)
+        #message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
+        #SendMessage(CC_SOCK, message)
+        #message = "NICK " + CC_NAME + "\r\n"
+        #SendMessage(CC_SOCK, message)
     else:
         print("ERROR: " + CC_STAT)
         exit()
@@ -66,7 +66,7 @@ def MainLoop():
             print(temp)
             if(CC_AUTH is False):
                 time.sleep(7)
-
+                SendMessage(CC_SOCK,"PING :25FD656")
                 message = "NICK " + CC_NAME + "\r\n"
                 SendMessage(CC_SOCK, message)
                 #time.sleep(4)
@@ -76,8 +76,6 @@ def MainLoop():
                 #message = "JOIN " + CC_CHAN + "\r\n"
             #    SendMessage(CC_SOCK, message)
                 CC_AUTH = True
-            cmd = raw_input('=>')
-            SendMessage(CC_SOCK, cmd)
 
 
 ConnectCC()
