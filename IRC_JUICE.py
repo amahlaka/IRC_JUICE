@@ -194,7 +194,7 @@ def SendWhois():
     """Send Whois results to C&C."""
     print("Saying")
     bot.say(CC_CHANNEL, "Results for WHOIS on: " + TRGT_HOST)
-    msg = "NICK: "+UserS.Nick+". NAME: "+UserS.Name
+    msg = "NICKNAME: "+UserS.Nick+". NAME: "+UserS.Name
     print(msg)
     bot.say(CC_CHANNEL, msg)
     msg = "CHANNELS: " + UserS.Chan
