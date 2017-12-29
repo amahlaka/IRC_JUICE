@@ -58,10 +58,13 @@ def MainLoop():
     global CC_MESSAGE
     while True:
         if (CC_CONNECTED is True):
-            CC_MESSAGE = CC_MESSAGE + CC_SOCK.recv(1024)
+            CC_MESSAGE = CC_MESSAGE+CC_SOCK.recv(1024)
             CC_MES = CC_MESSAGE.decode()
             temp = string.split(CC_MESSAGE, "\n")
             CC_ARRAY = temp.pop()
+            for line in CC_ARRAY:
+                line = string.rstrip(line)
+                line = string.split(line)
             print(CC_ARRAY)
             if (CC_MES is not ''):
                 print(CC_MES)
