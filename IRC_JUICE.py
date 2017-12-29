@@ -166,14 +166,14 @@ def ParseResult(result):
     print(result)
     global UserS
     result = result.replace('"', '')
-    result = result.replace('RFTRGT459Message:', '')
+    result = result.replace('RFTRGT459Message:', '')  # Remove the prefix
     result = result.replace(':', '')
     resultS = result.split('\n')
     for line in resultS:
         temps = line.split(' ')
         temps = list(filter(None, temps))
         if(len(temps) >= 3):
-            if(temps[1] in '311'):
+            if(temps[1] in "311"):
                 UserS.Nick = temps[4]
                 UserS.Name = temps[7]
                 UserS.Host = temps[5]
