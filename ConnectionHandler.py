@@ -117,7 +117,7 @@ def SendResult(result):
                 UserS.Host = temps[5]
             if(temps[1] in "319"):
                 UserS.Chan = temps[4]
-    print(str(UserS))
+    print(str(UserS()))
 
 
 @bot.on("message")
