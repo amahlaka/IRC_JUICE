@@ -223,7 +223,7 @@ def SendWhois():
     userS = User()
     global WHOIS_B
     global IsRealUser
-    WHOIS_B = None
+    WHOIS_B = ""
     IsRealUser = None
 
 
