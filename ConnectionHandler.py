@@ -1,77 +1,23 @@
 import sys
-import socket
-import string
 import time
 
+from asyncirc import irc
 CC_HOST = "127.0.0.1"
 CC_PORT = 6667
-CC_NAME = "BotteriB"
-CC_OWNR = "amahlaka"
-CC_SOCK = socket.socket()
-CC_CHAN = "##BOTTERI"
-
-readbuffer = ""
-C1_HOST = "irc.choopa.net"
-C1_PORT = 6667
-C1_NAME = "Botteri"
-C1_CHAN = "##BOTTERI"
-C1_SOCK = socket.socket()
-CC_MESSAGE = ""
-CC_BUFFER = ""
-C1_BUFFER = ""
-CC_CONNECTED = False
-C1_CONNECTED = False
-C1_LISTEN = True
-CC_AUTH = False
+CC_NICK = "Botteri1"
+bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
+bot.register(CC_NICK, CC_NICK, CC_NICK)
 
 
-def SendMessage(sock, message):
-    """Send message to the socket."""
-    print("Sending message " + message)
-    sock.send(message.encode())
+@conn.on("irc-001")
+def autojoin_channels(message):
+    bot.join(["##JUISSICMD", "#BOTTERI"])
 
 
-def ConnectCC():
-    """Connect to C&C server."""
-    print("***CONNECTING TO C&C SERVER***")
-    global CC_SOCK
-    global CC_CONNECTED
-    CC_STAT = CC_SOCK.connect_ex((CC_HOST, CC_PORT))
-    if(CC_STAT is 0):
-        print("CONNECTED")
-        CC_CONNECTED = True
-        CC_SOCK.setblocking(False)
-        MainLoop()
-
-    else:
-        print("ERROR: " + CC_STAT)
-        exit()
-    print("DONE")
-
-
-def MainLoop():
-    """Main Loop."""
-    global CC_SOCK
-    global CC_CONNECTED
-    global CC_AUTH
-    global CC_MESSAGE
-    readbuffer = ""
-    while True:
-        if (CC_CONNECTED is True):
-            rcv = CC_SOCK.recv(1024)
-            readbuffer = readbuffer+rcv
-            print(readbuffer)
-            print(rcv)
-            temp = string.split(readbuffer, "\n")
-            readbuffer = temp.pop()
-            print(readbuffer)
-            print(temp)
-            for line in readbuffer:
-                line = string.rstrip(line)
-                line = string.split(line)
-                print(line)
-                if(line[0] is "PING"):
-                    SendMessage(CC_SOCK, "PONG :"+line[1])
-
-
-ConnectCC()
+@bot.on("message")
+def incoming_message(parsed, user, target, text):
+    # parsed is an RFC1459Message object
+    # user is a User object with nick, user, and host attributes
+    # target is a string representing nick/channel the message was sent to
+    # text is the text of the message
+    bot.say(target, "{}: you said {}".format(user.nick, text))
