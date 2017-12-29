@@ -206,7 +206,7 @@ def SendWhois(res):
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
     """Handle incoming messages."""
-    if(target in CC_CHANNEL and user is CC_OWNER):
+    if(target in CC_CHANNEL and user in CC_OWNER):
         cmd = text.split(' ', 1)
         if('!whois' in cmd[0]):
             stalker.writeln("WHOIS {}".format(cmd[1]))
