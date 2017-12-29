@@ -94,6 +94,8 @@ def whois5(message):
 
 def SendResult(result):
     print(result)
+    result = result.replace('', '')
+    result = result.replace(':', '')
     result = result.replace('"', '')
     result = result.replace('RFC1459Message:', '')
     resultS = result.split('\n')
@@ -112,7 +114,6 @@ def incoming_message(parsed, user, target, text):
     # target is a string representing nick/channel the message was sent to
     # text is the text of the message
     bot.say(target, "{}: you said {}".format(user.nick, text))
-    stalker.say(target, "{}: you said {}".format(user.nick, text))
     cmd = text.split(' ', 1)
     print(cmd)
     print(cmd[0])
