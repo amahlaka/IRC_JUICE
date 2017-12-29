@@ -207,7 +207,7 @@ def incoming_message(parsed, user, target, text):
     """Handle incoming messages."""
     print(user.nick)
     print(target)
-    if(CC_CHANNEL in target and CC_OWNER in str(user.nick)):
+    if(CC_CHANNEL in target and CC_OWNER in user.nick):
         cmd = text.split(' ', 1)
         if('!whois' in cmd[0]):
             stalker.writeln("WHOIS {}".format(cmd[1]))
