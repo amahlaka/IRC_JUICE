@@ -98,9 +98,9 @@ def SendResult(result):
     result = result.replace('RFC1459Message :', '')
     resultS = result.split('\n')
     print(resultS)
-    for i, line in enumerate(resultS):
+    for line in resultS:
         print(line + "\n")
-        temps = line[i].split(' ')
+        temps = line.split(' ')
         print(temps[1])
 
 
