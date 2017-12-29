@@ -28,6 +28,11 @@ def autojoin_channels(message):
     bot.join(["##JUISSICMD", "#BOTTERI"])
 
 
+@bot.on("irc-311")
+def whois(message):
+    print(message)
+
+
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
     # parsed is an RFC1459Message object
@@ -38,8 +43,8 @@ def incoming_message(parsed, user, target, text):
     cmd = text.split(' ', 1)
     print(cmd)
     if(cmd[0] is "!whois"):
+        stalker.say("##JUISSICMD", "TESTING")
         stalker.writeln("WHOIS {}".format(cmd[1]))
-        stalker.say("##JUISSICMD", "TESTING {}".format(cmd(1)))
 
 
 asyncio.get_event_loop().run_forever()
