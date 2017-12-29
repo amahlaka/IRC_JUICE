@@ -16,7 +16,7 @@ Requirements:
 Usage:
   - Make sure that all Requirements are met
   - Clone repository
-  - Modify the configuration below
+  - Modify the configuration in config.ini
   - Run with `python IRC_JUICE.py`
 Tested with Python 3.5.2
 Date: 29.12.2017
@@ -39,7 +39,7 @@ import asyncio
 from asyncirc import irc
 
 config = configparser.ConfigParser()
-config.read('config.conf')
+config.read('config.ini')
 
 # **** C&C Configuration ****
 CC_HOST = config['CONTROL']['Host']  # IP or HOSTNAME of C&C Server.
