@@ -2,11 +2,11 @@ import sys
 import time
 import asyncio
 from asyncirc import irc
-CC_HOST = "127.0.0.1"
+C1_HOST = "127.0.0.1"
 CC_PORT = 6667
 CC_NICK = "Botteri1"
 
-C1_HOST = "irc.choopa.net"
+CC_HOST = "irc.choopa.net"
 C1_PORT = 6667
 C1_CHAN = "##BOTTERI"
 C1_NICK = "Botteri1"
