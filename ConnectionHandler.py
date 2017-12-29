@@ -76,6 +76,8 @@ def MainLoop():
                 message = "JOIN " + CC_CHAN + "\r\n"
                 SendMessage(CC_SOCK, message)
                 CC_AUTH = True
+            cmd = input()
+            SendMessage(CC_SOCK, cmd)
 
 
 ConnectCC()
