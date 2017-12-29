@@ -65,16 +65,16 @@ def MainLoop():
             print(readbuffer)
             print(temp)
             if(CC_AUTH is False):
-                time.sleep(3)
+                time.sleep(7)
 
                 message = "NICK " + CC_NAME + "\r\n"
                 SendMessage(CC_SOCK, message)
-                time.sleep(4)
-                message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
-                SendMessage(CC_SOCK, message)
-                time.sleep(4)
-                message = "JOIN " + CC_CHAN + "\r\n"
-                SendMessage(CC_SOCK, message)
+                #time.sleep(4)
+                #message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
+                #SendMessage(CC_SOCK, message)
+                #time.sleep(4)
+                #message = "JOIN " + CC_CHAN + "\r\n"
+            #    SendMessage(CC_SOCK, message)
                 CC_AUTH = True
             cmd = raw_input('=>')
             SendMessage(CC_SOCK, cmd)
