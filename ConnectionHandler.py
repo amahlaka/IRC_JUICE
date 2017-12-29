@@ -20,7 +20,7 @@ stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
 @stalker.on("irc-001")
 def autojoin_channels(message):
-    bot.join(["#BOTTERI"])
+    stalker.join(["#BOTTERI"])
 
 
 @bot.on("irc-001")
@@ -39,8 +39,6 @@ def incoming_message(parsed, user, target, text):
     if(cmd[0] is "!whois"):
         stalker.writeln("WHOIS {}".format(cmd[1]))
         stalker.say("##BOTTERI", "TESTING {}".format(cmd(1)))
-
-
 
 
 asyncio.get_event_loop().run_forever()
