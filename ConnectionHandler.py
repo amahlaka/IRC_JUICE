@@ -31,7 +31,7 @@ def autojoin_channels(message):
 @stalker.on("irc-311")
 def whois(message):
     global WHOIS_B
-    WHOIS_B = WHOIS_B + message
+    WHOIS_B = WHOIS_B + str(message)
     print("311")
     print(message)
 
@@ -41,7 +41,7 @@ def whois2(message):
     global WHOIS_B
     print("312")
     print(message)
-    WHOIS_B = WHOIS_B + message
+    WHOIS_B = WHOIS_B + str(message)
 
 
 @stalker.on("irc-313")
@@ -49,7 +49,7 @@ def whois3(message):
     global WHOIS_B
     print("313")
     print(message)
-    WHOIS_B = WHOIS_B + message
+    WHOIS_B = WHOIS_B + str(message)
 
 
 @stalker.on("irc-314")
@@ -57,7 +57,7 @@ def whois4(message):
     global WHOIS_B
     print("314")
     print(message)
-    WHOIS_B = WHOIS_B + message
+    WHOIS_B = WHOIS_B + str(message)
 
 
 @stalker.on("irc-315")
@@ -65,7 +65,7 @@ def whois5(message):
     global WHOIS_B
     print("315")
     print(message)
-
+    WHOIS_B = WHOIS_B + str(message)
 
 @stalker.on("irc")
 def ssd(message):
