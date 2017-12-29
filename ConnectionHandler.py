@@ -12,7 +12,7 @@ C1_CHAN = "##BOTTERI"
 C1_NICK = "Botteri1"
 bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
-WHOIS_B
+WHOIS_B = None
 
 stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
 stalker.register(C1_NICK, C1_NICK, C1_NICK)
