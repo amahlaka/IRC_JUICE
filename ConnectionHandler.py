@@ -16,7 +16,7 @@ C1_PORT = 6667
 C1_NAME = "Botteri"
 C1_CHAN = "##BOTTERI"
 C1_SOCK = socket.socket()
-
+CC_MESSAGE = ""
 CC_BUFFER = ""
 C1_BUFFER = ""
 CC_CONNECTED = False
