@@ -106,7 +106,7 @@ def SendResult(result):
         print(temps)
         if(len(temps) >= 3):
             if(temps[1] == '311'):
-
+                User.Name = temps[4]
 
 
 @bot.on("message")
