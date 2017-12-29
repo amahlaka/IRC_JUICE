@@ -57,7 +57,7 @@ def MainLoop():
     global CC_AUTH
     while True:
         if (CC_CONNECTED is True):
-            CC_MESSAGE = CC_SOCK + CC_SOCK.recv(1024).decode()
+            CC_MESSAGE = CC_MESSAGE + CC_SOCK.recv(1024).decode()
             temp = string.split(CC_BUFFER, "\n")
             CC_ARRAY = temp.pop()
             print(CC_ARRAY)
