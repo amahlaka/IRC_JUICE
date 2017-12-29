@@ -62,7 +62,8 @@ def MainLoop():
             readbuffer = readbuffer+CC_SOCK.recv(1024)
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
-            print(readbuffer)
+            if(readbuffer is not ""):
+                print(readbuffer)
             for line in readbuffer:
                 line = string.rstrip(line)
                 line = string.split(line)
