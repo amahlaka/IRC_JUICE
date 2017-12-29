@@ -170,6 +170,7 @@ def whois9(message):
     global IsRealUser
     print("RECIEVED CODE 318")
     if(IsRealUser is False):
+        WHOIS_B = ''
         ReplyError()
     else:
         WHOIS_B = WHOIS_B + "\n" + str(message)
@@ -224,7 +225,7 @@ def SendWhois():
     global WHOIS_B
     global IsRealUser
     WHOIS_B = ""
-    IsRealUser = None
+    IsRealUser = False
 
 
 @bot.on("message")
