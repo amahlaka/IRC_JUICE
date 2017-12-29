@@ -59,7 +59,7 @@ def MainLoop():
     while True:
         if (CC_CONNECTED is True):
             CC_MESSAGE = CC_SOCK.recv(1024)
-            temp = CC_MESSAGE.pop()
+            temp = CC_MESSAGE.decode().pop()
 
             if(CC_AUTH is False):
                 time.sleep(3)
