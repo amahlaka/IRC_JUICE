@@ -25,7 +25,7 @@ Version: 0.1b
 Popular IRC servers:
 NAME: HOSTNAME:PORT
 Freenode: chat.freenode.net:6667
-Choopa:  irc.choopa.net:6667
+Choopa:  irc.choopa.net:6667 NOTE: MAY NOT WORK HERE
 Rizon: irc.rizon.rocks:6667
 
 IRC_JUICE is licensed under MIT
@@ -168,7 +168,6 @@ def whois9(message):
     """Handle IRC code 318, End of WHOIS."""
     global WHOIS_B
     global IsRealUser
-    print("RECIEVED CODE 318")
     if(IsRealUser is False):
         WHOIS_B = ''
         ReplyError()
@@ -185,7 +184,6 @@ def ReplyError():
 def ParseResult(result):
     """Parse WHOIS results."""
     global UserS
-    print(result)
     result = result.replace('"', '')
     result = result.replace('RFC1459Message:', '')  # Remove the prefix
     result = result.replace(':', '')
@@ -203,13 +201,11 @@ def ParseResult(result):
                 y = [x for (i, x) in enumerate(temps) if i not in (0, 1, 2, 3)]
                 UserS.Chan = str(y)
             if(temps[1] in '318'):
-                print("SENDING")
                 SendWhois()
 
 
 def SendWhois():
     """Send Whois results to C&C."""
-    print("Saying")
     bot.say(CC_CHANNEL, "Results for WHOIS on: " + TRGT_HOST)
     msg = "NICKNAME: "+UserS.Nick+". NAME: "+UserS.Name
     print(msg)
