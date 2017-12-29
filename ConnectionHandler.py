@@ -12,7 +12,7 @@ C1_CHAN = "##BOTTERI"
 C1_NICK = "Botteri1"
 bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
-
+WHOIS_B = ""
 
 stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
 stalker.register(C1_NICK, C1_NICK, C1_NICK)
@@ -28,8 +28,42 @@ def autojoin_channels(message):
     bot.join(["##JUISSICMD", "#BOTTERI"])
 
 
-@bot.on("irc-311")
+@stalker.on("irc-311")
 def whois(message):
+    global WHOIS_B
+    WHOIS_B = WHOIS_B + message
+    print("311")
+    print(message)
+
+
+@stalker.on("irc-312")
+def whois(message):
+    global WHOIS_B
+    print("312")
+    print(message)
+    WHOIS_B = WHOIS_B + message
+
+
+@stalker.on("irc-313")
+def whois(message):
+    global WHOIS_B
+    print("313")
+    print(message)
+    WHOIS_B = WHOIS_B + message
+
+
+@stalker.on("irc-314")
+def whois(message):
+    global WHOIS_B
+    print("314")
+    print(message)
+    WHOIS_B = WHOIS_B + message
+
+
+@stalker.on("irc-315")
+def whois(message):
+    global WHOIS_B
+    print("315")
     print(message)
 
 
