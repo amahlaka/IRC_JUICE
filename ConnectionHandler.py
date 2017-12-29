@@ -87,14 +87,15 @@ def whois5(message):
     print("318")
 
     WHOIS_B = WHOIS_B + str(message)
-    WHOIS_B = WHOIS_B.split("RFC1459Message:")
+    WHOIS_B = WHOIS_B.split("RFC1459Message: ")
     print(WHOIS_B)
+    SendResult(WHOIS_B)
 
 
 def SendResult(result):
     for line in result:
         print(line)
-        print(line[1])
+        print(line[1] + "\n")
 
 
 @bot.on("message")
