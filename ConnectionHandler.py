@@ -54,7 +54,7 @@ def MainLoop():
     while True:
         if (CC_CONNECTED is True):
             if(CC_AUTH is False):
-                message = "NICK \r\n" + CC_NAME
+                message = "NICK " + CC_NAME + "\r\n"
                 SendMessage(CC_SOCK, message)
                 CC_AUTH = True
             CC_MESSAGE = CC_SOCK.recv(1024)
