@@ -69,6 +69,7 @@ def whois5(message):
 
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
+
 @stalker.on("irc-316")
 def whois5(message):
     global WHOIS_B
@@ -99,6 +100,7 @@ def SendResult(result):
     result = result.replace('"', '')
     result = result.replace('RFC1459Message:', '')
     resultS = result.split('\n')
+    resultS = list(filter(None, resultS))
     #print(resultS)
     for line in resultS:
         print(line + "\n")
