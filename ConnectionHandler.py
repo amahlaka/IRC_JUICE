@@ -52,10 +52,15 @@ def MainLoop():
     global CC_SOCK
     global CC_CONNECTED
     global CC_AUTH
-    if (CC_CONNECTED is True):
-        if(CC_AUTH is False):
-            message = "NICK %S\r\n" + CC_NAME
-            SendMessage(CC_SOCK, message)
-            CC_AUTH = True
-        CC_MESSAGE = CC_SOCK.recv(1024)
-        print(CC_MESSAGE)
+    while True:
+        if (CC_CONNECTED is True):
+            if(CC_AUTH is False):
+                message = "NICK %S\r\n" + CC_NAME
+                SendMessage(CC_SOCK, message)
+                CC_AUTH = True
+            CC_MESSAGE = CC_SOCK.recv(1024)
+            print(CC_MESSAGE)
+
+
+ConnectCC()
+MainLoop()
