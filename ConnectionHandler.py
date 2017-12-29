@@ -62,11 +62,14 @@ def MainLoop():
             readbuffer = CC_SOCK.recv(1024)
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
-            print(readbuffer)
-            print(temp)
+            for line in readbuffer:
+                line = string.rstrip(line)
+                line = string.split(line)
+                print(line)
+                if(line[0] is "PING"):
+                    SendMessage(CC_SOCK, "PONG :"+line[1])
             if(CC_AUTH is False):
                 time.sleep(7)
-                SendMessage(CC_SOCK,"PING :25FD656")
                 message = "NICK " + CC_NAME + "\r\n"
                 SendMessage(CC_SOCK, message)
                 #time.sleep(4)
