@@ -31,7 +31,7 @@ def autojoin_channels(message):
 @stalker.on("irc-311")
 def whois(message):
     global WHOIS_B
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
     print(message)
 
@@ -41,7 +41,7 @@ def whois2(message):
     global WHOIS_B
     print("312")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-313")
@@ -49,7 +49,7 @@ def whois3(message):
     global WHOIS_B
     print("313")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-314")
@@ -57,7 +57,7 @@ def whois4(message):
     global WHOIS_B
     print("314")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-315")
@@ -65,20 +65,22 @@ def whois5(message):
     global WHOIS_B
     print("315")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
 @stalker.on("irc-316")
 def whois5(message):
     global WHOIS_B
     print("316")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
+
+
 @stalker.on("irc-317")
 def whois5(message):
     global WHOIS_B
     print("317")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-318")
@@ -86,18 +88,14 @@ def whois5(message):
     global WHOIS_B
     print("318")
 
-    WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B + "\n" + str(message)
     SendResult(WHOIS_B)
 
 
 def SendResult(result):
-
-    temp = str.split(result, "\n")
-    result = temp.pop()
-    for line in result:
-        line = str.rstrip(line)
-        line = str.split(line)
-        print(line)
+    print(result)
+    resultS = result.split('\n')
+    print(resultS)
 
 
 @bot.on("message")
