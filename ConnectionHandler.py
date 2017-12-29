@@ -23,6 +23,7 @@ class User:
         self.Name = ""
         self.Nick = ""
         self.Chan = ""
+        self.Host = ""
 
 
 UserS = User()
@@ -111,11 +112,12 @@ def SendResult(result):
         print(temps)
         if(len(temps) >= 3):
             if(temps[1] in '311'):
-                UserS.Name = temps[4]
+                UserS.Nick = temps[4]
+                UserS.Name = temps[7]
+                UserS.Host = temps[5]
             if(temps[1] in "319"):
                 UserS.Chan = temps[4]
-                print(UserS.Chan)
-
+        print(str(UserS)
 
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
