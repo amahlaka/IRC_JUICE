@@ -31,6 +31,8 @@ def autojoin_channels(message):
 @stalker.on("irc-311")
 def whois(message):
     global WHOIS_B
+    if(WHOIS_B is None):
+        WHOIS_B = "\n" + str(message)
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
     print(message)
