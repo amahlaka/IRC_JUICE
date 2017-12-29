@@ -168,7 +168,6 @@ def whois9(message):
 
 def ParseResult(result):
     """Parse WHOIS results."""
-    print(result)
     global UserS
     result = result.replace('"', '')
     result = result.replace('RFTRGT459Message:', '')  # Remove the prefix
@@ -206,7 +205,7 @@ def SendWhois(res):
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
     """Handle incoming messages."""
-    print(user)
+    print(user.nick)
     print(target)
     if(CC_CHANNEL in target and CC_OWNER in str(user.nick)):
         cmd = text.split(' ', 1)
