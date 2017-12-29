@@ -168,6 +168,7 @@ def whois9(message):
 def ParseResult(result):
     """Parse WHOIS results."""
     global UserS
+    print(result)
     result = result.replace('"', '')
     result = result.replace('RFTRGT459Message:', '')  # Remove the prefix
     result = result.replace(':', '')
@@ -176,6 +177,7 @@ def ParseResult(result):
         temps = line.split(' ')
         temps = list(filter(None, temps))
         if(len(temps) >= 3):
+            print(temps)
             if(temps[1] in '311'):
                 UserS.Nick = temps[4]
                 UserS.Name = temps[7]
