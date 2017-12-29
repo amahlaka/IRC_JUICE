@@ -9,7 +9,7 @@ bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
 
 
-@conn.on("irc-001")
+@bot.on("irc-001")
 def autojoin_channels(message):
     bot.join(["##JUISSICMD", "#BOTTERI"])
 
