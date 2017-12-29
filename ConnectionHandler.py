@@ -40,6 +40,8 @@ def ConnectCC():
     if(CC_STAT is 0):
         print("CONNECTED")
         CC_CONNECTED = True
+        MainLoop()
+        CC_SOCK.setblocking(False)
         #message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
         #SendMessage(CC_SOCK, message)
         #message = "NICK " + CC_NAME + "\r\n"
@@ -56,7 +58,7 @@ def MainLoop():
     global CC_CONNECTED
     global CC_AUTH
     global CC_MESSAGE
-    global readbuffer
+    readbuffer = ""
     while True:
         if (CC_CONNECTED is True):
             readbuffer = readbuffer+CC_SOCK.recv(1024)
@@ -71,4 +73,3 @@ def MainLoop():
 
 
 ConnectCC()
-MainLoop()
