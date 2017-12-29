@@ -170,7 +170,7 @@ def ParseResult(result):
     global UserS
     print(result)
     result = result.replace('"', '')
-    result = result.replace('RFTRGT459Message:', '')  # Remove the prefix
+    result = result.replace('RFC1459Message:', '')  # Remove the prefix
     result = result.replace(':', '')
     resultS = result.split('\n')
     for line in resultS:
