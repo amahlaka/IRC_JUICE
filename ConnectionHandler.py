@@ -95,7 +95,10 @@ def whois5(message):
 def SendResult(result):
     print(result)
     resultS = result.split('\n')
+    resultS.remove('')
+    resultS = resultS.split('RFC1459Message: ')
     print(resultS)
+
 
 
 @bot.on("message")
