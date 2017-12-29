@@ -59,9 +59,10 @@ def MainLoop():
     global readbuffer
     while True:
         if (CC_CONNECTED is True):
-            readbuffer = CC_SOCK.recv(1024)
+            readbuffer = readbuffer+CC_SOCK.recv(1024)
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
+            print(readbuffer)
             for line in readbuffer:
                 line = string.rstrip(line)
                 line = string.split(line)
