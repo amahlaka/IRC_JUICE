@@ -19,12 +19,14 @@ stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
 
 class User:
-    Name = ""
-    Nick = ""
-    Channels = ""
+    def __init__(self):
+        self.Name = ""
+        self.Nick = ""
+        self.Chan = ""
 
 
 UserS = User()
+
 
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
@@ -98,6 +100,7 @@ def whois9(message):
 
 def SendResult(result):
     print(result)
+    global UserS
     result = result.replace('"', '')
     result = result.replace('RFC1459Message:', '')
     result = result.replace(':', '')
@@ -107,11 +110,11 @@ def SendResult(result):
         temps = list(filter(None, temps))
         print(temps)
         if(len(temps) >= 3):
-            if(temps[1] == '311'):
+            if(temps[1] in '311'):
                 UserS.Name = temps[4]
-            if(temps[1] == '319'):
-                UserS.Channel = temps[4]
-                print(UserS)
+            if(temps[1] in "319"):
+                UserS.Chan = temps[4]
+                print(UserS.Chan)
 
 
 @bot.on("message")
