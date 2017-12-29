@@ -64,7 +64,7 @@ def MainLoop():
                 CC_AUTH = True
             CC_MESSAGE = CC_SOCK.recv(1024)
             print(CC_MESSAGE)
-            if("PING" in CC_MESSAGE):
+            if("PING" in CC_MESSAGE.decode()):
                 SendMessage(CC_SOCK, "PONG")
 
 
