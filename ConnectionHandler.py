@@ -100,11 +100,11 @@ def SendResult(result):
     result = result.replace('"', '')
     result = result.replace('RFC1459Message:', '')
     resultS = result.split('\n')
-    resultS = list(filter(None, resultS))
     #print(resultS)
     for line in resultS:
         print(line + "\n")
         temps = line.split(' ')
+        temps = list(filter(None, temps))
         print(temps)
 
 
