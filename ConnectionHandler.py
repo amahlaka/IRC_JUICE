@@ -77,7 +77,7 @@ def MainLoop():
                 SendMessage(CC_SOCK, message)
                 CC_AUTH = True
             cmd = input()
-            SendMessage(CC_SOCK, cmd)
+            SendMessage(CC_SOCK, str(cmd))
 
 
 ConnectCC()
