@@ -94,10 +94,11 @@ def whois5(message):
 
 def SendResult(result):
     print(result)
-    resultS = result.split('\n')
-    resultS.remove('')
-    resultS = resultS.split('RFC1459Message: ')
+    resultS = result.split('RFC1459Message: ')
     print(resultS)
+    for line in resultS:
+        print(line + "\n")
+
 
 
 
