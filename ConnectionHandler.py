@@ -58,7 +58,7 @@ def MainLoop():
     global CC_MESSAGE
     while True:
         if (CC_CONNECTED is True):
-            CC_MESSAGE = CC_MESSAGE+CC_SOCK.recv(1024).decode
+            CC_MESSAGE = CC_MESSAGE+CC_SOCK.recv(1024).decode()
             CC_MES = CC_MESSAGE.decode()
             temp = string.split(CC_MESSAGE, "\n")
             CC_ARRAY = temp.pop()
