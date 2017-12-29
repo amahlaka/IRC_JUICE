@@ -24,6 +24,8 @@ class User:
     Channels = ""
 
 
+UserS = User()
+
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
     stalker.join(["##JUISSICMD"])
@@ -106,7 +108,10 @@ def SendResult(result):
         print(temps)
         if(len(temps) >= 3):
             if(temps[1] == '311'):
-                User.Name = temps[4]
+                UserS.Name = temps[4]
+            if(temps[1] == '319'):
+                UserS.Channel = temps[4]
+                print(UserS)
 
 
 @bot.on("message")
