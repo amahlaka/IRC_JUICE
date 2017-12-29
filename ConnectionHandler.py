@@ -19,7 +19,7 @@ stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
 
 @stalker.on("irc-001")
-def autojoin_channels(message):
+def autojoin_channelsB(message):
     stalker.join(["#BOTTERI"])
 
 
