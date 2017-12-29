@@ -42,10 +42,6 @@ def ConnectCC():
         CC_CONNECTED = True
         MainLoop()
         CC_SOCK.setblocking(False)
-        #message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
-        #SendMessage(CC_SOCK, message)
-        #message = "NICK " + CC_NAME + "\r\n"
-        #SendMessage(CC_SOCK, message)
     else:
         print("ERROR: " + CC_STAT)
         exit()
@@ -62,6 +58,7 @@ def MainLoop():
     while True:
         if (CC_CONNECTED is True):
             readbuffer = readbuffer+CC_SOCK.recv(1024)
+            print(readbuffer)
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
             for line in readbuffer:
