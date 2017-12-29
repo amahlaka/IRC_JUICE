@@ -40,6 +40,10 @@ def ConnectCC():
     if(CC_STAT is 0):
         print("CONNECTED")
         CC_CONNECTED = True
+        message = "USER " + CC_NAME + " 0 * :Botteri\r\n"
+        SendMessage(CC_SOCK, message)
+        message = "NICK " + CC_NAME + "\r\n"
+        SendMessage(CC_SOCK, message)
     else:
         print("ERROR: " + CC_STAT)
         exit()
