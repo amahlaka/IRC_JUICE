@@ -87,12 +87,15 @@ def whois5(message):
     print("318")
 
     WHOIS_B = WHOIS_B + str(message)
+    WHOIS_B = WHOIS_B.split("RFC1459Message:")
     print(WHOIS_B)
 
 
-#@stalker.on("irc")
-#def ssd(message):
-#    print(message)
+def SendResult(result):
+    for line in result:
+        print(line)
+        print(line[1])
+
 
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
