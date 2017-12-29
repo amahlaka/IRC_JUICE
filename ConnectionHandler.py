@@ -116,9 +116,9 @@ def SendResult(result):
                 UserS.Name = temps[7]
                 UserS.Host = temps[5]
             if(temps[1] in "319"):
-                linec = [x for (i, x) in enumerate(temps) if i not in (0,1,2,3)]
-                print(linec)
-                UserS.Chan = str(linec)
+                y = [x for (i, x) in enumerate(temps) if i not in (0, 1, 2, 3)]
+                print(y)
+                UserS.Chan = str(y)
             if(temps[1] in "318"):
                 SendWhois(UserS)
 
@@ -130,16 +130,22 @@ def SendWhois(res):
     bot.say(CC_CHANNEL, "Results for WHOIS: {}".format(msg))
 
 
+@stalker.on("message")
+def ignore(parsed, user, target, text):
+    print("Ignored")
+
+
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
-    bot.say(target, "{}: you said {}".format(user.nick, text))
-    cmd = text.split(' ', 1)
-    print(cmd)
-    print(cmd[0])
-    if('!whois' in cmd[0]):
-        print("WHOIS")
-        stalker.say("##JUISSICMD", "TESTING")
-        stalker.writeln("WHOIS {}".format(cmd[1]))
+    if(target in "CC_CHANNEL"):
+        bot.say(target, "{}: you said {}".format(user.nick, text))
+        cmd = text.split(' ', 1)
+        print(cmd)
+        print(cmd[0])
+        if('!whois' in cmd[0]):
+            print("WHOIS")
+            stalker.say("##JUISSICMD", "TESTING")
+            stalker.writeln("WHOIS {}".format(cmd[1]))
 
 
 asyncio.get_event_loop().run_forever()
