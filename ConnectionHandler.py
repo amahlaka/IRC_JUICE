@@ -10,6 +10,11 @@ C1_HOST = "chat.freenode.net"
 C1_PORT = 6667
 C1_CHAN = "##BOTTERI"
 C1_NICK = "Botteri1"
+CC_OWNER = "amahlaka"
+
+
+victimList = ["##TEST1", "#BOTTERI"]
+
 bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
 WHOIS_B = None
@@ -17,6 +22,9 @@ WHOIS_B = None
 stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
 stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
+print("C&C SERVER: "+CC_HOST+":"+str(CC_PORT))
+print("C&C CHANNEL: "+CC_CHANNEL)
+print("ACCEPTING COMMNDS FROM: "+CC_OWNER)
 
 class User:
     def __init__(self):
@@ -31,12 +39,13 @@ UserS = User()
 
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
-    stalker.join([CC_CHANNEL])
+    stalker.join(victimList)
+    print("Connected to: " + victimList)
 
 
 @bot.on("irc-001")
 def autojoin_channels(message):
-    bot.join(["##JUISSICMD", "#BOTTERI"])
+    bot.join([CC_CHANNEL])
 
 
 @stalker.on("irc-311")
@@ -109,7 +118,6 @@ def SendResult(result):
     for line in resultS:
         temps = line.split(' ')
         temps = list(filter(None, temps))
-        print(temps)
         if(len(temps) >= 3):
             if(temps[1] in '311'):
                 UserS.Nick = temps[4]
@@ -117,7 +125,6 @@ def SendResult(result):
                 UserS.Host = temps[5]
             if(temps[1] in "319"):
                 y = [x for (i, x) in enumerate(temps) if i not in (0, 1, 2, 3)]
-                print(y)
                 UserS.Chan = str(y)
             if(temps[1] in "318"):
                 SendWhois(UserS)
@@ -126,25 +133,14 @@ def SendResult(result):
 def SendWhois(res):
     msg = "Whois report: "+res.Nick+"'s Real name is: "+res.Name+"  "
     msg = msg + "Channels:" + res.Chan + " HOST:" + res.Host + " on " + C1_HOST
-    print(msg)
     bot.say(CC_CHANNEL, "Results for WHOIS: {}".format(msg))
-
-
-@stalker.on("message")
-def ignore(parsed, user, target, text):
-    print("Ignored")
 
 
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
-    if(target in "CC_CHANNEL"):
-        bot.say(target, "{}: you said {}".format(user.nick, text))
+    if(target in CC_CHANNEL and user is CC_OWNER):
         cmd = text.split(' ', 1)
-        print(cmd)
-        print(cmd[0])
         if('!whois' in cmd[0]):
-            print("WHOIS")
-            stalker.say("##JUISSICMD", "TESTING")
             stalker.writeln("WHOIS {}".format(cmd[1]))
 
 
