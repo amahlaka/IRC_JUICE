@@ -59,13 +59,8 @@ def MainLoop():
     while True:
         if (CC_CONNECTED is True):
             CC_MESSAGE = CC_SOCK.recv(1024)
-            CC_MES = CC_MESSAGE
-            temp = string.split(CC_MESSAGE, "\n")
-            CC_ARRAY = temp.pop()
-            for line in CC_ARRAY:
-                line = string.rstrip(line)
-                line = string.split(line)
-            print(CC_ARRAY)
+            temp = CC_MESSAGE.pop()
+
             if(CC_AUTH is False):
                 time.sleep(3)
 
