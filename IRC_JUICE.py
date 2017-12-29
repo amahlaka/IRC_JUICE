@@ -7,7 +7,6 @@ This bot connects to 2 different IRC servers and runs WHOIS on Target server,
 when instructed to by Command server
 
 Requirements:
-
   - Python version 3.5.2
   - You also need to have pip installed matching the python version!
     (at least pip 8.1.1)
@@ -15,7 +14,6 @@ Requirements:
     (Install with "pip3 install asyncio-irc" or "pip install asyncio-irc")
 
 Usage:
-
   - Make sure that all Requirements are met
   - Clone repository
   - Modify the configuration below
@@ -23,6 +21,12 @@ Usage:
 Tested with Python 3.5.2
 Date: 29.12.2017
 Version: 0.1b
+
+Popular IRC servers:
+NAME: HOSTNAME:PORT
+Freenode: chat.freenode.net:6667
+Choopa:  irc.choopa.net:6667
+Rizon: irc.rizon.rocks:6667
 
 IRC_JUICE is licensed under MIT
 For more details, please see the LICENSE.md file
@@ -42,7 +46,7 @@ CC_OWNER = ""  # Accept commands only from this User.
 # ////////END OF C&C CONFIG ////////
 
 # **** Target Configuration ****
-TRGT_HOST = "chat.freenode.net"  # IP or HOSTNAME of Target Server.
+TRGT_HOST = ""  # IP or HOSTNAME of Target Server.
 TRGT_PORT = 6667  # Target server port. ( Usually between 6665-6669)
 TRGT_CHAN = []  # List of Channels to join on target server.
 TRGT_NICK = ""  # Nickname of bot in Target server.
