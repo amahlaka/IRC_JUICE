@@ -44,6 +44,7 @@ def incoming_message(parsed, user, target, text):
     cmd = text.split(' ', 1)
     print(cmd)
     if(cmd[0] is "!whois"):
+        print("WHOIS")
         stalker.say("##JUISSICMD", "TESTING")
         stalker.writeln("WHOIS {}".format(cmd[1]))
 
