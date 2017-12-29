@@ -5,7 +5,7 @@ from asyncirc import irc
 CC_HOST = "127.0.0.1"
 CC_PORT = 6667
 CC_NICK = "Botteri1"
-
+CC_CHANNEL = "##JUISSICMD"
 C1_HOST = "chat.freenode.net"
 C1_PORT = 6667
 C1_CHAN = "##BOTTERI"
@@ -31,7 +31,7 @@ UserS = User()
 
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
-    stalker.join(["##JUISSICMD"])
+    stalker.join([CC_CHANNEL])
 
 
 @bot.on("irc-001")
@@ -117,8 +117,15 @@ def SendResult(result):
                 UserS.Host = temps[5]
             if(temps[1] in "319"):
                 UserS.Chan = temps[4]
-    print(str(UserS()))
+            if(temps[1] in "318"):
+                SendWhois(UserS)
 
+
+def SendWhois(res):
+    msg = res.Nick + " " + UserS.Name + " " + UserS.Host + " " + UserS.Chan
+    print(msg)
+    bot.say(CC_CHANNEL, "Results for WHOIS: {}".format(msg))
+    
 
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
