@@ -104,7 +104,7 @@ def SendResult(result):
         temps = line.split(' ')
         temps = list(filter(None, temps))
         print(temps)
-        if(len(temps) => 3):
+        if(len(temps) >= 3):
             if(temps[1] == '311'):
 
 
