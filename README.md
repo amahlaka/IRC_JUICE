@@ -21,9 +21,9 @@ Usage:
   - Run with `python IRC_JUICE.py`
   - On C&C Channel, send message `!whois <target>`
   
-Tested with Python 3.5.2
-Date: 29.12.2017
-Version: 0.1b
+Tested with Python 3.5.2.  
+Date: 29.12.2017.  
+Version: 0.1b  
 
 Popular IRC servers:
  - Freenode: `chat.freenode.net:6667` 
@@ -32,7 +32,7 @@ Popular IRC servers:
 
 
 
-IRC_JUICE is licensed under MIT
-For more details, please see the LICENSE.md file
+IRC_JUICE is licensed under MIT.  
+For more details, please see the LICENSE.md file  
 
 Uses asyncirc library from https://github.com/watchtower/asyncirc
