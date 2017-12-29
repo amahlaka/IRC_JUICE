@@ -1,5 +1,6 @@
 import sys
 import time
+import string
 import asyncio
 from asyncirc import irc
 CC_HOST = "127.0.0.1"
@@ -87,15 +88,16 @@ def whois5(message):
     print("318")
 
     WHOIS_B = WHOIS_B + str(message)
-    WHOIS_B = WHOIS_B.split("RFC1459Message: ")
-    print(WHOIS_B)
     SendResult(WHOIS_B)
 
 
 def SendResult(result):
+    temp = string.split(result, "\n")
+    result = temp.pop()
     for line in result:
+        line = string.rstrip(line)
+        line = string.split(line)
         print(line)
-        print(line[1] + "\n")
 
 
 @bot.on("message")
