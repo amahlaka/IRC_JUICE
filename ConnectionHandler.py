@@ -40,8 +40,9 @@ def ConnectCC():
     if(CC_STAT is 0):
         print("CONNECTED")
         CC_CONNECTED = True
-        MainLoop()
         CC_SOCK.setblocking(False)
+        MainLoop()
+
     else:
         print("ERROR: " + CC_STAT)
         exit()
@@ -57,10 +58,14 @@ def MainLoop():
     readbuffer = ""
     while True:
         if (CC_CONNECTED is True):
-            readbuffer = readbuffer+CC_SOCK.recv(1024)
+            rcv = CC_SOCK.recv(1024)
+            readbuffer = readbuffer+rcv
             print(readbuffer)
+            print(rcv)
             temp = string.split(readbuffer, "\n")
             readbuffer = temp.pop()
+            print(readbuffer)
+            print(temp)
             for line in readbuffer:
                 line = string.rstrip(line)
                 line = string.split(line)
