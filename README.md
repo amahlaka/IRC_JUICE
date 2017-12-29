@@ -17,7 +17,7 @@ Requirements:
 Usage:
   - Make sure that all Requirements are met
   - Clone repository
-  - Modify the configuration in the IRC_JUICE.py
+  - Modify the configuration in the config.ini
   - Run with `python IRC_JUICE.py`
   - On C&C Channel, send message `!whois <target>`
   
@@ -27,7 +27,7 @@ Version: 0.1b
 
 Popular IRC servers:
  - Freenode: `chat.freenode.net:6667` 
- - Choopa:  `irc.choopa.net:6667` 
+ - Choopa:  `irc.choopa.net:6667` (May have problems connecting)   
  - Rizon: `irc.rizon.rocks:6667` 
 
 
