@@ -18,9 +18,9 @@ stalker = irc.connect(C1_HOST, C1_PORT, use_ssl=False)
 stalker.register(C1_NICK, C1_NICK, C1_NICK)
 
 
-@stalker.on("irc-001")
-def autojoin_channelsB(message):
-    stalker.join(["#BOTTERI"])
+#@stalker.on("irc-001")
+#def autojoin_channelsB(message):
+#    stalker.join(["#BOTTERI"])
 
 
 @bot.on("irc-001")
