@@ -92,12 +92,14 @@ UserS = User()
 def autojoin_channelsB(message):
     """Handle channel joining for target server."""
     stalker.join([TRGT_CHAN])
+    print("Joining Target Channel")
 
 
 @bot.on("irc-001")
 def autojoin_channels(message):
     """Handle channel joining for C&C server."""
     bot.join([CC_CHANNEL])
+    print("Joining CC Channel")
 
 
 @stalker.on("irc-311")
