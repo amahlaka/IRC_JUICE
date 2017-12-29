@@ -57,6 +57,14 @@ def MainLoop():
     global CC_AUTH
     while True:
         if (CC_CONNECTED is True):
+            CC_MESSAGE = CC_SOCK + CC_SOCK.recv(1024).decode()
+            temp = string.split(CC_BUFFER, "\n")
+            CC_ARRAY = temp.pop()
+            print(CC_ARRAY)
+            if (CC_MESSAGE is not ''):
+                print(CC_MESSAGE)
+            if("PING" in CC_MESSAGE):
+                SendMessage(CC_SOCK, "PONG")
             if(CC_AUTH is False):
                 time.sleep(3)
 
@@ -69,11 +77,7 @@ def MainLoop():
                 message = "JOIN " + CC_CHAN + "\r\n"
                 SendMessage(CC_SOCK, message)
                 CC_AUTH = True
-            CC_MESSAGE = CC_SOCK.recv(1024).decode()
-            if (CC_MESSAGE is not ''):
-                print(CC_MESSAGE)
-            if("PING" in CC_MESSAGE):
-                SendMessage(CC_SOCK, "PONG")
+
 
 
 ConnectCC()
