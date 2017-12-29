@@ -116,23 +116,22 @@ def SendResult(result):
                 UserS.Name = temps[7]
                 UserS.Host = temps[5]
             if(temps[1] in "319"):
-                UserS.Chan = temps[4]
+                linec = [x for (i, x) in enumerate(temps) if i not in (0,1,2,3)]
+                print(linec)
+                UserS.Chan = str(linec)
             if(temps[1] in "318"):
                 SendWhois(UserS)
 
 
 def SendWhois(res):
-    msg = res.Nick + " " + UserS.Name + " " + UserS.Host + " " + UserS.Chan
+    msg = "Whois report:\n"+UserS.Nick+"'s Real name is: "+UserS.Name+"\n"
+    msg = msg + "Channel"
     print(msg)
     bot.say(CC_CHANNEL, "Results for WHOIS: {}".format(msg))
-    
+
 
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
-    # parsed is an RFC1459Message object
-    # user is a User object with nick, user, and host attributes
-    # target is a string representing nick/channel the message was sent to
-    # text is the text of the message
     bot.say(target, "{}: you said {}".format(user.nick, text))
     cmd = text.split(' ', 1)
     print(cmd)
@@ -140,7 +139,6 @@ def incoming_message(parsed, user, target, text):
     if('!whois' in cmd[0]):
         print("WHOIS")
         stalker.say("##JUISSICMD", "TESTING")
-        stalker.writeln("PRIVMSG ##JUISSICMD DEBUG")
         stalker.writeln("WHOIS {}".format(cmd[1]))
 
 
