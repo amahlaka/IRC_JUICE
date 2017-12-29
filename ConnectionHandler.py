@@ -91,11 +91,12 @@ def whois5(message):
 
 
 def SendResult(result):
-    temp = temp.split(result, "\n")
+
+    temp = str.split(result, "\n")
     result = temp.pop()
     for line in result:
-        line = line.rstrip(line)
-        line = line.split(line)
+        line = str.rstrip(line)
+        line = str.split(line)
         print(line)
 
 
