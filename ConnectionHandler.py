@@ -35,10 +35,10 @@ def incoming_message(parsed, user, target, text):
     # target is a string representing nick/channel the message was sent to
     # text is the text of the message
     bot.say(target, "{}: you said {}".format(user.nick, text))
-    #cmd = text.split(' ', 1)
-    #if(cmd[0] is "!whois"):
-    #    stalker.writeln("WHOIS {}".format(cmd[1]))
-    #    stalker.say("##BOTTERI", "TESTING {}".format(cmd(1)))
+    cmd = text.split(' ', 1)
+    if(cmd[0] is "!whois"):
+        stalker.writeln("WHOIS {}".format(cmd[1]))
+        stalker.say("##JUISSICMD", "TESTING {}".format(cmd(1)))
 
 
 asyncio.get_event_loop().run_forever()
