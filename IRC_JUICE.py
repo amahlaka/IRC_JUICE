@@ -88,13 +88,13 @@ UserS = User()
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
     """Handle channel joining for target server."""
-    stalker.join(TRGT_CHAN)
+    stalker.join([TRGT_CHAN])
 
 
 @bot.on("irc-001")
 def autojoin_channels(message):
     """Handle channel joining for C&C server."""
-    bot.join(CC_CHANNEL)
+    bot.join([CC_CHANNEL])
 
 
 @stalker.on("irc-311")
@@ -105,8 +105,6 @@ def whois(message):
         WHOIS_B = "\n" + str(message)
     else:
         WHOIS_B = WHOIS_B + "\n" + str(message)
-
-    print(message)
 
 
 @stalker.on("irc-312")
@@ -177,27 +175,27 @@ def ParseResult(result):
         temps = line.split(' ')
         temps = list(filter(None, temps))
         if(len(temps) >= 3):
-            if(temps[1] in "311"):
+            if(temps[1] in '311'):
                 UserS.Nick = temps[4]
                 UserS.Name = temps[7]
                 UserS.Host = temps[5]
-            if(temps[1] in "319"):
+            if(temps[1] in '319'):
                 y = [x for (i, x) in enumerate(temps) if i not in (0, 1, 2, 3)]
                 UserS.Chan = str(y)
-            if(temps[1] in "318"):
+            if(temps[1] in '318'):
                 SendWhois(UserS)
 
 
 def SendWhois(res):
     """Send Whois results to C&C."""
     bot.say(CC_CHANNEL, "Results for WHOIS on: " + TRGT_HOST)
-    msg = "NICK: "+res.Nick+". NAME: "+res.Name
+    msg = "NICK: "+UserS.Nick+". NAME: "+UserS.Name
     print(msg)
     bot.say(CC_CHANNEL, msg)
-    msg = "CHANNELS: " + res.Chan
+    msg = "CHANNELS: " + UserS.Chan
     print(msg)
     bot.say(CC_CHANNEL, msg)
-    msg = "HOST: " + res.Host
+    msg = "HOST: " + UserS.Host
     print(msg)
     bot.say(CC_CHANNEL, msg)
 
