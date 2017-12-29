@@ -37,7 +37,7 @@ def whois(message):
 
 
 @stalker.on("irc-312")
-def whois(message):
+def whois2(message):
     global WHOIS_B
     print("312")
     print(message)
@@ -45,7 +45,7 @@ def whois(message):
 
 
 @stalker.on("irc-313")
-def whois(message):
+def whois3(message):
     global WHOIS_B
     print("313")
     print(message)
@@ -53,7 +53,7 @@ def whois(message):
 
 
 @stalker.on("irc-314")
-def whois(message):
+def whois4(message):
     global WHOIS_B
     print("314")
     print(message)
@@ -61,11 +61,15 @@ def whois(message):
 
 
 @stalker.on("irc-315")
-def whois(message):
+def whois5(message):
     global WHOIS_B
     print("315")
     print(message)
 
+
+@stalker.on("irc")
+def ssd(message):
+    print(message)
 
 @bot.on("message")
 def incoming_message(parsed, user, target, text):
