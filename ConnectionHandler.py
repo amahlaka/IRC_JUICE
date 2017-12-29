@@ -10,7 +10,7 @@ CC_OWNR = "amahlaka"
 CC_SOCK = socket.socket()
 CC_CHAN = "##JUISSICMD"
 
-
+readbuffer = ""
 C1_HOST = "irc.choopa.net"
 C1_PORT = 6667
 C1_NAME = "Botteri"
@@ -56,11 +56,13 @@ def MainLoop():
     global CC_CONNECTED
     global CC_AUTH
     global CC_MESSAGE
+    global readbuffer
     while True:
         if (CC_CONNECTED is True):
-            CC_MESSAGE = CC_SOCK.recv(1024)
-            temp = CC_MESSAGE.decode().pop()
-
+            readbuffer = readbuffer+CC_SOCK.recv(1024)
+            temp = string.split(readbuffer, "\n")
+            readbuffer = temp.pop()
+            print(readbuffer)
             if(CC_AUTH is False):
                 time.sleep(3)
 
