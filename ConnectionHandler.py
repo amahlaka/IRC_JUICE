@@ -1,6 +1,6 @@
 import sys
 import time
-
+import asyncio
 from asyncirc import irc
 CC_HOST = "127.0.0.1"
 CC_PORT = 6667
@@ -21,3 +21,7 @@ def incoming_message(parsed, user, target, text):
     # target is a string representing nick/channel the message was sent to
     # text is the text of the message
     bot.say(target, "{}: you said {}".format(user.nick, text))
+
+
+
+asyncio.get_event_loop().run_forever()
