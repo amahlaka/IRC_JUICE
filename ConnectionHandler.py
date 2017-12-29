@@ -23,6 +23,7 @@ class User:
     Nick = ""
     Channels = ""
 
+
 @stalker.on("irc-001")
 def autojoin_channelsB(message):
     stalker.join(["##JUISSICMD"])
@@ -47,8 +48,6 @@ def whois(message):
 @stalker.on("irc-312")
 def whois2(message):
     global WHOIS_B
-
-
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
@@ -71,24 +70,25 @@ def whois5(message):
 
 
 @stalker.on("irc-316")
-def whois5(message):
+def whois6(message):
     global WHOIS_B
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-317")
-def whois5(message):
+def whois7(message):
     global WHOIS_B
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
 
 @stalker.on("irc-319")
-def whois5(message):
+def whois8(message):
     global WHOIS_B
     WHOIS_B = WHOIS_B + "\n" + str(message)
 
+
 @stalker.on("irc-318")
-def whois5(message):
+def whois9(message):
     global WHOIS_B
     WHOIS_B = WHOIS_B + "\n" + str(message)
     SendResult(WHOIS_B)
