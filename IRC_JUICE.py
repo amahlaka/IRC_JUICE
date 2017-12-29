@@ -34,26 +34,31 @@ For more details, please see the LICENSE.md file
 Uses asyncirc library from https://github.com/watchtower/asyncirc
 """
 
+import configparser
 import asyncio
 from asyncirc import irc
 
+config = configparser.ConfigParser()
+config.read('config.conf')
+
 # **** C&C Configuration ****
-CC_HOST = ""  # IP or HOSTNAME of C&C Server.
-CC_PORT = 6667  # Port of C&C Server.
-CC_NICK = ""  # Nickname for the bot, shown on C&C.
-CC_CHANNEL = ""  # C&C Channel name (With the # Prefix).
-CC_OWNER = ""  # Accept commands only from this User.
+CC_HOST = config['CONTROL']['Host']  # IP or HOSTNAME of C&C Server.
+CC_PORT = int(config['CONTROL']['Port'])  # Port of C&C Server.
+CC_NICK = config['CONTROL']['Nick']  # Nickname for the bot, shown on C&C.
+CC_CHANNEL = config['CONTROL']['Channel']  # C&C Channel name.
+CC_OWNER = config['CONTROL']['Owner']  # Accept commands only from this User.
 # ////////END OF C&C CONFIG ////////
 
 # **** Target Configuration ****
-TRGT_HOST = ""  # IP or HOSTNAME of Target Server.
-TRGT_PORT = 6667  # Target server port. ( Usually between 6665-6669)
-TRGT_CHAN = []  # List of Channels to join on target server.
-TRGT_NICK = ""  # Nickname of bot in Target server.
+TRGT_HOST = config['TARGET']['Host']  # IP or HOSTNAME of Target Server.
+TRGT_PORT = int(config['TARGET']['Port'])  # Target server port.
+TRGT_CHAN = config['TARGET']['Channel']  # List of Channels to join on target.
+TRGT_NICK = config['TARGET']['Nick']  # Nickname of bot in Target server.
 # ////////END OF TARGET CONFIG ////////
 
 
 # DO NOT MODIFY BELOW THIS!
+
 bot = irc.connect(CC_HOST, CC_PORT, use_ssl=False)
 bot.register(CC_NICK, CC_NICK, CC_NICK)
 WHOIS_B = None
@@ -89,7 +94,7 @@ def autojoin_channelsB(message):
 @bot.on("irc-001")
 def autojoin_channels(message):
     """Handle channel joining for C&C server."""
-    bot.join([CC_CHANNEL])
+    bot.join(CC_CHANNEL)
 
 
 @stalker.on("irc-311")
